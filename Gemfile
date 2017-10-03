@@ -17,6 +17,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
+gem 'faker'
+gem 'kaminari'
 
 group :development, :test do
   gem 'mysql2'
