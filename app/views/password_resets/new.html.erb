@@ -1,0 +1,6 @@
+<% provide(:title, "忘记密码") %>
+<p>忘记密码</p>
+<%= simple_form_for(:password_reset, url: password_resets_path) do |f| %>
+  <%= f.input :email %>
+  <%= f.button :submit %>
+<% end %>

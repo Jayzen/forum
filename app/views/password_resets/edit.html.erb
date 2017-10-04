@@ -1,0 +1,8 @@
+<% provide(:title, "密码重置")%>
+<h1>PasswordResets#edit</h1>
+<%= simple_form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+  <%= hidden_field_tag :email, @user.email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.button :submit %>
+<% end %>
