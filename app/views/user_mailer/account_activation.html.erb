@@ -1,0 +1,5 @@
+<h1>用户激活</h1>
+
+<p>
+点击链接激活<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+</p>

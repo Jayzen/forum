@@ -13,8 +13,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_activation_email
+      flash[:notice] = "check your activate mail"
       redirect_to user_path(@user)
-      flash[:notice] = "注册成功"
     else
       render 'new'
     end
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order("created_at desc").page(params[:page])
+    @users = User.where("activated: true").page(params[:page])
   end
 
   def destroy
