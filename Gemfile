@@ -19,9 +19,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 gem 'faker'
 gem 'kaminari'
+gem 'mysql2'
+
 
 group :development, :test do
-  gem 'mysql2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -41,9 +42,6 @@ group :test do
   gem 'guard-minitest'
 end
 
-group :production do
-  gem 'pg'
-end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
