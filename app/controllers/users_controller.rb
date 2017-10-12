@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where("activated: true").page(params[:page])
+    @users = User.where({activated: true}).page(params[:page])
   end
 
   def destroy
