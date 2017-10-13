@@ -39,19 +39,10 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  config.action_mailer.default_url_options = {
-    host: "zhengjiajun.com"
-  }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-     address: "smtp.gmail.com",
-     port: 587,
-     user_name: "zhengjiajun121",
-     password: "Zjj201102",
-     authentication: "plain",
-     enable_starttls_auto: true
-  }
+  config.action_mailer.default_url_options = { host: "zhengjiajun.com" }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
+
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
