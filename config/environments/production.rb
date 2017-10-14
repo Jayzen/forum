@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  config.action_mailer.default_url_options = { host: "zhengjiajun.com" }
+  config.action_mailer.default_url_options = { host: "www.zhengjiajun.com" }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
 
