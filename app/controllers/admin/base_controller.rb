@@ -1,4 +1,5 @@
-class Admin::BaseController < ApplicationController
+class Admin::BaseController < ActionController::Base
+  include SessionsHelper
   before_action :auth_admin
 
   private

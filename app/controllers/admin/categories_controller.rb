@@ -1,4 +1,6 @@
 class Admin::CategoriesController < Admin::BaseController
+  layout 'admin/layouts/admin'
+
   before_action :find_root_categories, only: [:new, :create, :edit, :update]
   before_action :find_category, only: [:edit, :update, :destroy]
 
@@ -10,8 +12,7 @@ class Admin::CategoriesController < Admin::BaseController
       @categories = @category.children
     end
 
-    @categories = @categories.page(params[:page] || 1).per_page(params[:per_page] || 10)
-      .order(id: "desc")
+    @categories = @categories.order(id: "desc").page(params[:page])
   end
 
   def new

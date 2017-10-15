@@ -1,3 +1,3 @@
-User.all.each do |user|
-  user.update_attributes(admin: false)
+100.times do |i|
+  Category.create(name: "tag#{i}", ancestry: nil)
 end

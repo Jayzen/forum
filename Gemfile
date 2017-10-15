@@ -18,11 +18,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 gem 'faker'
-gem 'kaminari'
 gem 'mysql2'
 gem 'ancestry'
-gem 'will_paginate'
 gem 'font-awesome-rails'
+gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

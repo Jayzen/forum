@@ -1,13 +1,14 @@
+<% provide(:title, "分类列表")%>
 <div>
   <div class="pull-right">
-    <%= link_to "新建目录", new_admin_category_path, class: "btn btn-primary" %>
+    <%= link_to "新建分类", new_admin_category_path, class: "btn btn-primary" %>
   </div>
 
   <h1>
     <% if @category %>
-      分类:<%= @category.name %>(<%= @categories.total_entries %>)
+      分类:<%= @category.name %>(<%= @categories.size %>)
     <% else %>
-      分类(<%= @categories.total_entries %>)
+      分类(<%= @categories.size %>)
     <% end -%>
   </h1>
 </div>
@@ -27,6 +28,5 @@
       </tr>
     <% end -%>
   </table>
-
-  <%= will_paginate @categories %>
+  <%= paginate @categories %>
 </div>
