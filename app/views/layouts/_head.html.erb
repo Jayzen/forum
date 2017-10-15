@@ -3,6 +3,9 @@
   <%= link_to "编辑", edit_user_path(current_user) %>
   <%= link_to "退出", logout_path, method: :delete %>
   <%= link_to "用户列表", users_path %>
+  <% if current_user.admin? %>
+    <%= link_to "分类管理", admin_categories_path %>
+  <% end %>
 <% else %>
   <%= link_to "登录", login_path %>
   <%= link_to "注册", signup_path %>

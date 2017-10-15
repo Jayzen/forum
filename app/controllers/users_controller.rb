@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:notice] = "check your activate mail"
+      flash[:notice] = "邮件已经发送，请查看邮箱！"
       redirect_to user_path(@user)
     else
       render 'new'

@@ -1,0 +1,11 @@
+class Category < ApplicationRecord
+  validates :name, presence: { message: "名称不能为空" }
+  has_ancestry orphan_strategy: :destroy
+
+  before_validation :correct_ancestry
+
+  private
+    def correct_ancestry
+      self.ancestry = nil if self.ancestry.blank?
+    end
+end
