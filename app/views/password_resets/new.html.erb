@@ -1,6 +1,18 @@
 <% provide(:title, "忘记密码") %>
-<p>忘记密码</p>
-<%= simple_form_for(:password_reset, url: password_resets_path) do |f| %>
-  <%= f.input :email %>
-  <%= f.button :submit %>
-<% end %>
+
+<div class="form-body">
+  <%= form_for :password_reset, url: password_resets_path, html: { class: 'form-horizontal' } do |f| %>
+   <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">注册邮箱</label>
+      <div class="col-sm-5">
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+   </div>
+
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-8">
+        <%= f.submit "密码重置", class: "btn btn-default" %>
+     </div>
+   </div>
+  <% end -%>
+</div>

@@ -1,8 +1,47 @@
-<% provide(:title, "注册")%>
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %> 
-  <%= f.input :password %> 
-  <%= f.input :password_confirmation %>
-  <%= f.button :submit %>
-<% end %>
+<div class="form-body">
+  <%= form_for @user, url: users_path, method: 'post', html: { class: 'form-horizontal' } do |f| %>
+    <% unless @user.errors.blank? %>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <% @user.errors.messages.values.flatten.each do |error| %>
+            <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
+          <% end -%>
+        </ul>
+      </div>
+    <% end -%>
+  
+   <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">名字</label>
+      <div class="col-sm-5">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="email" class="col-sm-2 control-label">邮箱</label>
+      <div class="col-sm-5">
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-5">
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">密码确认</label>
+      <div class="col-sm-5">
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+   </div>
+    
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= f.submit "创建用户", class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end -%>
+</div>

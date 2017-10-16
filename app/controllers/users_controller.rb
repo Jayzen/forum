@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  
   def new
     @user = User.new
   end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:notice] = "邮件已经发送，请查看邮箱！"
+      flash[:notice] = "用户激活邮件已经发送，请查看邮箱！"
       redirect_to user_path(@user)
     else
       render 'new'
@@ -33,17 +33,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def index
-    @users = User.where({activated: true}).page(params[:page])
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "deleted successful"
-    redirect_to users_url
   end
 
   private

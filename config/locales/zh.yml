@@ -18,12 +18,13 @@ zh:
         user:
           attributes:
             name:
-              blank: "不能为空"
+              blank: "名字不能为空"
             email:
-              blank: "不能为空"
-              invalid: "格式不正确"
+              blank: "邮件不能为空"
+              invalid: "邮件格式不正确"
+              taken: "该邮箱已经被注册"
             password:
-              blank: "不能为空"
-              too_short: "字符太短"
+              blank: "密码不能为空"
+              too_short: "密码字符太短"
             password_confirmation:
               confirmation: "两次密码不一致"

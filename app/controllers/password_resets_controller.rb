@@ -14,7 +14,7 @@ class PasswordResetsController < ApplicationController
       flash[:notice] = "请查看密码重置邮件！"
       redirect_to root_url
     else
-      flash.now[:notice] = "email is not invalid"
+      flash.now[:notice] = "该邮箱不存在!"
       render 'new'
     end
   end
@@ -24,11 +24,11 @@ class PasswordResetsController < ApplicationController
 
   def update
     if params[:user][:password].empty?
-      @user.errors.add(:password, "can't be empty")
+      @user.errors.add(:password, "密码不能为空!")
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      flash[:notice] = "password has been reset"
+      flash[:notice] = "密码已经被重置!"
       redirect_to @user
     else
       render 'edit'
