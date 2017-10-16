@@ -6,3 +6,24 @@ zh:
       previous: "&lsaquo; 上页"
       next: "下页 &rsaquo;"
       truncate: "..."
+  activerecord:
+    attributes:
+      user:
+        name: "用户名"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "密码确认"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "不能为空"
+            email:
+              blank: "不能为空"
+              invalid: "格式不正确"
+            password:
+              blank: "不能为空"
+              too_short: "字符太短"
+            password_confirmation:
+              confirmation: "两次密码不一致"

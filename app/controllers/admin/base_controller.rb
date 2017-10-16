@@ -1,5 +1,7 @@
 class Admin::BaseController < ActionController::Base
   include SessionsHelper
+  include UsersHelper
+
   before_action :auth_admin
 
   private
