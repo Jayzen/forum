@@ -1,6 +1,4 @@
 class Admin::CategoriesController < Admin::BaseController
-  layout 'admin/layouts/admin'
-
   before_action :find_root_categories, only: [:new, :create, :edit, :update]
   before_action :find_category, only: [:edit, :update, :destroy]
 

@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories
     resources :users
+    root 'welcomes#index'
   end
 end
