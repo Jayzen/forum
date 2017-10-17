@@ -15,9 +15,18 @@
 
 <div>
   <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>名称</th>
+      <th>权重</th>
+      <th></th>
+    </tr>
+
     <% @categories.each do |category| %>
       <tr>
+        <td><%= category.id %></td>
         <td><%= category.name %></td>
+        <td><%= category.weight %></td>
         <td align="right">
           <%= link_to "编辑", edit_admin_category_path(category) %> 
           <%= link_to "删除", admin_category_path(category), method: :delete, 'data-confirm': "确认删除吗?" %>
@@ -28,5 +37,6 @@
       </tr>
     <% end -%>
   </table>
+
   <%= paginate @categories %>
 </div>
