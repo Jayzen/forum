@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_back_or user
       else
-        flash[:notice] = "account not activated, please checkout link"
+        flash[:notice] = "账号未激活!"
         redirect_to root_url
       end
     else
-      flash.now[:notice] = "email or password wrong"
+      flash.now[:notice] = "邮箱或者密码不正确!"
       render 'new'
     end
   end
