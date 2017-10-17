@@ -1,15 +1,20 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token, :old_password
+  
   before_save :downcase_email
   before_create :create_activation_digest
+  has_secure_password
+
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255},
-    format: { with: VALID_EMAIL_REGEX },
-    uniqueness: { case_sensitive: false}
-  has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :email, presence: true, length: { maximum: 255}, uniqueness: { case_sensitive: false }
+  validates :email, format: { with: VALID_EMAIL_REGEX }, unless: proc{ |user| user.email.blank? }
+  validates :password, presence: true
+  validates :password, length: { minimum: 6 }, unless: proc{ |user| user.password.blank? }
+  
 
+  has_many :topics, dependent: :destroy
+  
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
