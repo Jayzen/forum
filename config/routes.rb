@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :edit, :create, :update]
 
   namespace :admin do
+    root "welcomes#index"
     resources :categories
     resources :users
-    resources :topics
-    root 'welcomes#index'
+    resources :topics do
+      resources :topic_images, only: [:index, :create, :destroy, :update]
+    end
   end
 end

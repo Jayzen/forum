@@ -7,6 +7,7 @@ class Topic < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  has_many :topic_images
 
   module Status
     On = 'on'

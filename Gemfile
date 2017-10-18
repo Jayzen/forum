@@ -22,6 +22,11 @@ gem 'mysql2'
 gem 'ancestry'
 gem 'font-awesome-rails'
 gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'carrierwave-upyun'
+
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

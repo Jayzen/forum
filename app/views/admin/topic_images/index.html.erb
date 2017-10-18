@@ -1,0 +1,40 @@
+<div>
+  <div class="pull-right">
+    <%= form_tag admin_topic_topic_images_path(topic_id: @topic), method: :post, enctype: "multipart/form-data", class: "form-horizontal" do %>
+      <%= file_field_tag 'attach[]', multiple: true, class: 'image-input' %>
+      <%= submit_tag "上传", class: "btn btn-default" %>
+    <% end -%>
+  </div>
+
+  <h1>
+    话题 #<%= @topic.id %> <%= @topic.title %> 
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>图片</th>
+      <th>权重</th>
+      <th></th>
+    </tr>
+
+    <% @topic_images.each do |topic_image| %>
+      <tr>
+        <td><%= topic_image.id %></td>
+        <td><%= image_tag topic_image.attach %></td>
+        <td>
+          <%= form_tag admin_topic_topic_image_path(@topic, topic_image), method: :put do %>
+            <input type="text" value="<%= topic_image.weight %>" name="weight" />
+            <%= submit_tag "更新", class: "btn btn-default btn-xs" %>
+          <% end -%>
+        </td>
+        <td align="right">
+          <%= link_to "删除", admin_topic_topic_image_path(@topic, topic_image), method: :delete, 'data-confirm': "确认删除吗?" %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+
+</div>
