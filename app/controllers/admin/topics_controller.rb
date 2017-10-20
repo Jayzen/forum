@@ -1,9 +1,12 @@
 class Admin::TopicsController < Admin::BaseController
-  before_action :find_topic, only: [:edit, :update, :destroy]
+  before_action :find_topic, only: [:edit, :update, :destroy, :show]
   before_action :find_root_categories, only: [:new, :create, :edit, :update]
 
   def index
     @topics = Topic.page(params[:page]).order("id desc")
+  end
+
+  def show
   end
 
   def new
@@ -15,7 +18,7 @@ class Admin::TopicsController < Admin::BaseController
     @topic.user_id = current_user.id
     if @topic.save
       flash[:notice] = "话题创建成功"
-      redirect_to admin_topics_path
+      redirect_to admin_topic_path(@topic)
     else
       render action: :new
     end
@@ -30,7 +33,7 @@ class Admin::TopicsController < Admin::BaseController
     @topic.user_id = current_user.id
     if @topic.save
       flash[:notice] = "话题修改成功"
-      redirect_to admin_topics_path
+      redirect_to admin_topic_path(@topic)
     else
       render action: :new
     end
