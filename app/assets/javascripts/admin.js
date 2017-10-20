@@ -4,3 +4,4 @@
 //= require bootstrap-sprockets
 //= require simditor
 //= require simditor_initialize
+//= require turbolinks
