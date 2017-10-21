@@ -4,7 +4,7 @@ class Topic < ApplicationRecord
   validates :title, presence: { message: "标题不能为空" }
   validates :content, presence: { message: "内容不能为空" }
   validates :status, inclusion: { in: %w(on off), message: "话题状态必须为on|off" }
-
+  mount_uploader :image, AttachmentUploader
   belongs_to :user
   belongs_to :category
   has_many :topic_images

@@ -13,9 +13,12 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :edit, :create, :update]
-
+  resources :topics
+  post 'upload', to: 'topic_attaches#upload'
+  
   namespace :admin do
     root "welcomes#index"
+    post 'upload', to: 'topic_attaches#upload'
     resources :categories
     resources :users
     resources :topics do

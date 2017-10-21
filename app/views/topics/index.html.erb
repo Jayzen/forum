@@ -1,0 +1,39 @@
+<div>
+  <div class="pull-right">
+    <%= link_to "新建话题", new_topic_path, class: "btn btn-primary" %>
+  </div>
+
+  <h1>
+    话题总数(<%= @topics.size %>)
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>标题</th>
+      <th>作者</th>
+      <th>分类</th>
+      <th>状态</th>
+      <th></th>
+    </tr>
+
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= topic.id %></td>
+        <td><%= topic.title %></td>
+        <td><%= topic.user_id %></td>
+        <td><%= topic.category_id %></td>
+        <td><%= topic.status %></td>
+        <td align="right">
+          <%= link_to "编辑", edit_topic_path(topic) %> 
+          <%= link_to "删除", topic_path(topic), method: :delete, 'data-confirm': "确认删除吗?" %>
+          <%= link_to "图片管理", admin_topic_topic_images_path(topic_id: topic) %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+
+  <%= paginate @topics %>
+</div>

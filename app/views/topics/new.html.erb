@@ -1,10 +1,10 @@
 <div>
-  <h1><%= @topic.new_record? ? "新建话题" : "修改话题 ##{params[:id]}" %></h1>
+  <h4><%= @topic.new_record? ? "新建话题" : "修改话题 ##{params[:id]}" %></h4>
 </div>
 
 <div class="form-body">
   <%= form_for @topic, 
-    url: (@topic.new_record? ? admin_topics_path : admin_topic_path(@topic)), 
+    url: (@topic.new_record? ? topics_path : topic_path(@topic)), 
     method: (@topic.new_record? ? 'post' : 'put'), 
     html: { class: 'form-horizontal' } do |f| %>
     
@@ -66,7 +66,6 @@
     </div>
   <% end -%>
 </div>
-
 <%= content_for :javascripts do %>
   <script>
     var editor = new Simditor({
@@ -75,6 +74,6 @@
     placeholder: '这里输入文字...',
     pasteImage: true,
     fileKey: 'file',
-    upload: { url: '/admin/upload', params: null, connectionCount: 3, leaveConfirm: 'Uploading is in progress, are you sure to leave this page?' } });
+    upload: { url: '/upload', params: null, connectionCount: 3, leaveConfirm: 'Uploading is in progress, are you sure to leave this page?' } }); 
   </script>
 <% end %>

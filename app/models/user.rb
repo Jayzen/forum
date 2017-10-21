@@ -14,7 +14,8 @@ class User < ApplicationRecord
   
 
   has_many :topics, dependent: :destroy
-  
+  has_many :topic_attaches
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
