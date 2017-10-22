@@ -7,5 +7,10 @@
     <ul class="nav nav-tabs">
       <%= render 'user_head' %>
     </ul>
+    <ul>
+      <% @topics.each do |topic| %>
+        <li><%= topic.title %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -14,6 +14,15 @@ class UsersController < ApplicationController
     @users = User.all.order('id asc').where(activated: true).page(params[:page])
   end
 
+  def topics
+    @user = User.find(params[:user_id])
+    @topics = @user.topics
+  end
+
+  def details
+    @user = User.find(params[:user_id])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
