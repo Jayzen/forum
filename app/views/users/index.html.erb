@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= gravatar_for current_user %></br>
+      <a href="http://gravatar.com/emails" target=_blank>改变头像</a></br>
+      <%= current_user.name %></br>
+      <%= current_user.admin? ? "身份:管理员" : "普通用户" %>
+    </div>
+    <div class="col-md-10">
+      <table class="table table-striped">
+        <tr>
+          <th>用户名</th>
+          <th>邮件</th>
+          <th>查看</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to "用户详情", user_path(user) %></td>
+          </tr>
+         <% end %>
+      </table>
+      <%= paginate @users%>
+    </div>
+  </div>
+</div>

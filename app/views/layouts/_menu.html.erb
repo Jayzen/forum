@@ -19,12 +19,15 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> 搜索</a></li>
         <% unless logged_in? %>
           <li><a href="<%= signup_path %>">注册</a></li>
           <li><a href="<%= login_path %>">登录</a></li>
         <% else %>
-          <li><a href="#"><i class="fa fa-th-large" aria-hidden="true"></i> 分类</a></li>
           <li><a href="<%= new_topic_path %>"><i class="fa fa-plus" aria-hidden="true"></i> 新建</a></li>
+          <li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i> 通知</a></li>
+          <li><a href="#"><i class="fa fa-th-large" aria-hidden="true"></i> 分类</a></li>
+          <li><a href="<%= users_path %>"><i class="fa fa-users" aria-hidden="true"></i> 成员</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
             <ul class="dropdown-menu">

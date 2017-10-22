@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def index
+    @users = User.all.order('id asc').where(activated: true).page(params[:page])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -43,7 +47,7 @@ class UsersController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:notice] = "please login in"
+        flash[:notice] = "用户请登录!"
         redirect_to login_url
       end
     end
