@@ -3,4 +3,3 @@
 //= require bootstrap-sprockets
 //= require simditor
 //= require turbolinks
-

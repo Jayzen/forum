@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
-  
+  before_action :find_user, except: [:new, :index, :create]
+
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def index
@@ -15,29 +15,23 @@ class UsersController < ApplicationController
   end
 
   def topics
-    @user = User.find(params[:user_id])
     @topics = @user.topics
   end
 
   def details
-    @user = User.find(params[:user_id])
   end
 
   def replies
-    @user = User.find(params[:user_id])
   end
 
   def collections
-    @user = User.find(params[:user_id])
   end
 
   def following
-    @user = User.find(params[:id])
     @following_users = @user.following
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers_users = @user.followers
   end
   
@@ -53,11 +47,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "用户更新成功!"
       redirect_to @user
@@ -86,5 +78,9 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+    
+    def find_user
+      @user = User.find(params[:id])
     end
 end

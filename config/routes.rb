@@ -11,12 +11,8 @@ Rails.application.routes.draw do
   post 'login', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"
   resources :users do
-    get 'topics', to: "users#topics"
-    get 'details', to: "users#details"
-    get 'replies', to: "users#replies"
-    get 'collections', to: "users#collections"
     member do
-      get :following, :followers
+      get :following, :followers, :collections, :topics, :details, :replies 
     end
   end
   resources :relationships, only: [:create, :destroy]
