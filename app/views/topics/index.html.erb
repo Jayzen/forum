@@ -12,6 +12,7 @@
   <table class="table table-striped">
     <tr>
       <th>ID</th>
+      <th>分类</th>
       <th>标题</th>
       <th>作者</th>
       <th>分类</th>
@@ -22,6 +23,7 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= topic.id %></td>
+        <td><%= topic.category.name %></td>
         <td><%= topic.title %></td>
         <td><%= topic.user_id %></td>
         <td><%= topic.category_id %></td>

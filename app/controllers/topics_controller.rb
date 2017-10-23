@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
     @topics = Topic.page(params[:page]).order("id desc")
   end
 
+ 
   def show
     @categories = Category.grouped_data
   end
