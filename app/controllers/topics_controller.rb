@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @categories = Category.grouped_data
   end
 
   def new
@@ -73,7 +74,8 @@ class TopicsController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @topic = Topic.find(params[:id])
+      @user = @topic.user
       redirect_to(root_path) unless current_user?(@user)
     end
 end

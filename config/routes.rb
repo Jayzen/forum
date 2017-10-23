@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  root 'welcomes#index'
   get 'password_resets/new'
   get 'password_resets/edit'
-
-  root 'welcomes#index'
 
   get 'signup', to: "users#new"
   get 'static_pages/home'
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
   resources :topics
   post 'upload', to: 'topic_attaches#upload'
   
+  resources :categories
   namespace :admin do
     root "welcomes#index"
     post 'upload', to: 'topic_attaches#upload'

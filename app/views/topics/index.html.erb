@@ -27,9 +27,14 @@
         <td><%= topic.category_id %></td>
         <td><%= topic.status %></td>
         <td align="right">
-          <%= link_to "编辑", edit_topic_path(topic) %> 
-          <%= link_to "删除", topic_path(topic), method: :delete, 'data-confirm': "确认删除吗?" %>
-          <%= link_to "图片管理", admin_topic_topic_images_path(topic_id: topic) %>
+          <%= link_to "查看", topic_path(topic) %>
+          <% if logged_in? %>
+            <% if current_user==topic.user %>
+              <%= link_to "编辑", edit_topic_path(topic) %> 
+              <%= link_to "删除", topic_path(topic), method: :delete, 'data-confirm': "确认删除吗?" %>
+              <%= link_to "图片管理", admin_topic_topic_images_path(topic_id: topic) %>
+            <% end %>  
+          <% end %>
         </td>
       </tr>
     <% end -%>

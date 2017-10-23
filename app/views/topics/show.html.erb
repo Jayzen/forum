@@ -1,2 +1,10 @@
-<%= @topic.title %></br>
-<%= sanitize @topic.content %>
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= @topic.title %></h2>
+    <%= sanitize @topic.content %>
+  </div>
+  <div class="col-md-4">
+    <%= render 'categories'%>
+  </div>
+</div>
+
