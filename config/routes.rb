@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   resources :users do
     get 'topics', to: "users#topics"
     get 'details', to: "users#details"
+    get 'replies', to: "users#replies"
+    get 'collections', to: "users#collections"
+    member do
+      get :following, :followers
+    end
   end
-  
+  resources :relationships, only: [:create, :destroy]
   
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :edit, :create, :update]

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   
   def new
@@ -23,6 +23,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def replies
+    @user = User.find(params[:user_id])
+  end
+
+  def collections
+    @user = User.find(params[:user_id])
+  end
+
+  def following
+    @user = User.find(params[:id])
+    @following_users = @user.following
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @followers_users = @user.followers
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
