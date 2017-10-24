@@ -1,5 +1,8 @@
 <ul>
   <% @comments.each do |comment| %>
-    <li><%= sanitize comment.content %></li>
+    <li>
+      <%= sanitize comment.content %>
+      <%= link_to "删除", comment_path(comment), method: :delete, 'data-confirm': "确定删除吗?" %>
+    </li>
   <% end %>
 </ul>
