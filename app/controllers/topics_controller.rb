@@ -11,6 +11,8 @@ class TopicsController < ApplicationController
  
   def show
     @categories = Category.grouped_data
+    @comment = Comment.new
+    @comments = @topic.comments
   end
 
   def new

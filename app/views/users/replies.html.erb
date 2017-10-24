@@ -7,6 +7,10 @@
     <ul class="nav nav-tabs">
       <%= render 'user_head' %>
     </ul>
-     reply
+    <ul>
+      <% @replies.each do |reply| %>
+        <li><%= sanitize reply.content %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

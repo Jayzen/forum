@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :topics, dependent: :destroy
   has_many :topic_attaches
+  has_many :comments
 
   has_many :active_relationships, class_name:  "Relationship",
     foreign_key: "follower_id",

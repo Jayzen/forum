@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def replies
+    @replies = @user.comments
   end
 
   def collections

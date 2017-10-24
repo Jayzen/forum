@@ -2,6 +2,9 @@
   <div class="col-md-8">
     <h2><%= @topic.title %></h2>
     <%= sanitize @topic.content %>
+    </br>
+    <%= render 'comment' %>
+    <%= render 'comments' %>
   </div>
   <div class="col-md-4">
     <%= render 'layouts/categories'%>

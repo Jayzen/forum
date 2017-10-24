@@ -1,0 +1,37 @@
+<div>
+  <%= form_for @comment, url: comments_path, method: 'post', html: { class: 'form-horizontal' } do |f| %>
+    <%= hidden_field_tag :id, @topic.id %>
+    <% unless @comment.errors.blank? %>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <% @comment.errors.messages.values.flatten.each do |error| %>
+            <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
+          <% end -%>
+        </ul>
+      </div>
+    <% end -%>
+
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.text_area :content, class: "form-control", id: "comment_content", rows: "10" %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-8" >
+        <%= f.submit "提交", class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end -%>
+</div>
+<%= content_for :javascripts do %>
+  <script>
+    var editor = new Simditor({
+    textarea: $('#comment_content'),
+    toolbar: ['bold', 'italic', 'underline', 'strikethrough', 'color', 'code', 'link','image','hr'],
+    placeholder: '这里输入评论...',
+    pasteImage: true,
+    fileKey: 'file',
+    upload: { url: '/upload', params: null, connectionCount: 3, leaveConfirm: 'Uploading is in progress, are you sure to leave this page?' } }); 
+  </script>
+<% end %>
