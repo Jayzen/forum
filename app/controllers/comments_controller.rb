@@ -13,10 +13,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    
-  end
-
   private
     def logged_in_user
       unless logged_in?

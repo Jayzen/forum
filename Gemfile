@@ -25,6 +25,9 @@ gem 'carrierwave'
 gem 'carrierwave-upyun'
 gem 'simditor'
 gem 'turbolinks'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

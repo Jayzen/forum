@@ -14,4 +14,14 @@ class Topic < ApplicationRecord
     On = 'on'
     Off = 'off'
   end
+  
+  searchable do 
+    #boost是提高权重
+    text :title, :boost => 5 
+    text :content
+    #关联comment
+    text :comments do 
+      comments.map(&:content) 
+    end 
+  end
 end

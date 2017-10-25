@@ -1,0 +1,9 @@
+<div class="row">
+  <%= form_tag root_path, :method => :get do %>
+    <div class="col-xs-4">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "输入搜索内容...." %> 
+    </div>
+    <%= submit_tag "搜索", :name => nil, class: "btn btn-default" %>
+  <% end %>
+  <HR>
+</div>

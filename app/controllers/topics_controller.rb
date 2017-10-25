@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
   def show
     @categories = Category.grouped_data
     @comment = Comment.new
-    @comments = @topic.comments
+    @comments = @topic.comments.order("created_at desc")
   end
 
   def new

@@ -19,12 +19,6 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#">
-            <input type="text" placeholder="Search for...">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </a>
-        </li>
         <% unless logged_in? %>
           <li><a href="<%= signup_path %>">注册</a></li>
           <li><a href="<%= login_path %>">登录</a></li>
