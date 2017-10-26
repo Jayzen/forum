@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'welcomes#index'
+  get "hot", to: "welcomes#hot"
+  get "cold", to: "welcomes#cold"
+
   get 'password_resets/new'
   get 'password_resets/edit'
 
