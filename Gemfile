@@ -24,7 +24,6 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-upyun'
 gem 'simditor'
-gem 'turbolinks'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -4,7 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :stylesheets %>
   </head>
 
@@ -16,7 +16,8 @@
       <% end -%>
       <%= yield %>
     </div>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag 'application' %>
     <%= yield :javascripts %>
   </body>
 </html>

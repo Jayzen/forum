@@ -1,6 +1,9 @@
 <ul>
   <% @topics.each do |topic| %>
-    <li><%= link_to "#{topic.title}", topic_path(topic) %></li>
+    <li><%= topic.title %></li>
   <% end %>
 </ul>
+
+
+
 <%= paginate @topics %>
