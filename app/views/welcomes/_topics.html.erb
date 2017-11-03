@@ -1,30 +1,34 @@
-<div class="container">
-      <ul class="article">
-         <li>
-            <div class="user_img">
-               <img src="https://l.ruby-china.org/user/avatar/13200.jpg!lg" alt="">
-            </div>
-            <div class="article_msg">
-               <div class="heading">
-                  <a href="#">
-                     <span>公告</span>
-                     宇宙社会学：生存是文明的第一需要
-                  </a>
-               </div>
-               <div class="info">
-                  <a href="#">lgn21st</a>
-                  <span>
-                     • 最后由
-                     <a href="#">liuxianq511240</a>
-                     回复于
-                     <span title="7 天前">7 天前</span>
-                  </span>
-               </div>
-            </div>
-            <div class="article_reply">
-               <a href="#">25</a>
-            </div>
-         </li>
-      </ul>
+<% @topics.each do |topic| %>
+<ul class="article">
+  <li>
+    <div class="user_img">
+      <img src="https://l.ruby-china.org/user/avatar/13200.jpg!lg" alt="">
+    </div>
+    <div class="article_msg">
+      <div class="heading">
+        <a href="#">
+          <span><%= topic.category.name %></span>
+          <%= link_to topic.title, topic_path(topic) %>
+        </a>
+      </div>
+      <div class="info">
+        <a href="#"><%= topic.user.name %></a>
+           <% unless topic.comments_count == 0 %>
+             <span>
+              • 最后由
+              <a href="#">liuxianq511240</a>
+              回复于
+              <span title="7 天前">7 天前</span>
+             </span>
+           <% else %>
+             • 发表于<%= time_ago_in_words(topic.created_at) %>前
+           <% end %>
+      </div>
+    </div>
+    <div class="article_reply">
+      <a href="#"><%= topic.comments_count %></a>
+    </div>
+  </li>
+</ul>
+<% end %>
 <%= paginate @topics %>
-</div>
