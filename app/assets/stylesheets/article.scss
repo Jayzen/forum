@@ -1,0 +1,15 @@
+ul{list-style:none;padding:0;margin:0;}
+a:hover{text-decoration: none;}
+.article li{display:flex;padding:10px;min-height:68px;}
+.user_img,.article_msg,article_reply{display:table-cell;}
+.user_img img{margin-right:10px;width:48px;height:48px;border-radius:50%;}
+.heading{line-height:30px;}
+.heading a{font-size:15px;color:#222;}
+.heading a span{margin-right:3px;color:#555;}
+.heading a:hover{color:#555;}
+.heading a:hover span{color:#222;}
+.info{color:#8f8d8b;font-size:12px;}
+.info a{text-decoration:underline;color:#8f8d8b;}
+.article_reply{width:100px;text-align:right;padding-top:15px;}
+.article_reply a{line-height:11px;color:#fff;background:#CFD3E6;min-width:32px;text-align:center;border-radius:80px;padding:3px 8px 3px 8px;display:inline-block;}
+.article_reply a:hover{background:#A9BBDC;}
