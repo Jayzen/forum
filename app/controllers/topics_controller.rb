@@ -13,11 +13,6 @@ class TopicsController < ApplicationController
     end
     render file: 'welcomes/index'
   end 
-
-  def index
-    @topics = Topic.page(params[:page]).order("id desc")
-  end
-
  
   def show
     @categories = Category.grouped_data
@@ -58,7 +53,7 @@ class TopicsController < ApplicationController
   def destroy
     if @topic.destroy
       flash[:notice] = "删除成功"
-      redirect_to admin_topics_path
+      redirect_to root_path
     else
       flash[:notice] = "删除失败"
       redirect_to :back

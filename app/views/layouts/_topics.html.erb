@@ -12,13 +12,12 @@
         </a>
       </div>
       <div class="info">
-        <a href="#"><%= topic.user.name %></a>
-           <% unless topic.comments_count == 0 %>
-             <span>
-              • 最后由
-              <a href="#">liuxianq511240</a>
-              回复于
-              <span title="7 天前">7 天前</span>
+        <%= link_to "#{topic.user.name}", user_path(topic.user)%>
+        <% unless topic.comments_count == 0 %>
+          <span>
+            • 最后由
+            <%= link_to "#{topic.comments.last.user.name}", user_path(topic.comments.last.user) %>
+           <span><%= time_ago_in_words(topic.comments.last.created_at) %>前回复</span>
              </span>
            <% else %>
              • 发表于<%= time_ago_in_words(topic.created_at) %>前

@@ -20,7 +20,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% unless logged_in? %>
-          <li><a href="<%= signup_path %>">注册</a></li>
           <li><a href="<%= login_path %>">登录</a></li>
         <% else %>
           <li><a href="<%= new_topic_path %>"><i class="fa fa-plus" aria-hidden="true"></i> 新建</a></li>

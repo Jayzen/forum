@@ -1,10 +1,10 @@
-<div class="navbar-form navbar-left">
-  <div class="form-group">
-    <%= form_tag  search_topics_path, method: :get do %>
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "输入搜索内容...." %>
-      <%= submit_tag "搜索", :name => nil, class: "btn btn-default" %>
-    <% end %>
-  </div>
+<div>
+  <%= form_tag  search_topics_path, method: :get, class: "navbar-form navbar-left" do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], class: "form-control search-input", placeholder: "输入搜索内容...." %>
+    </div>
+    <%= submit_tag "搜索", :name => nil, class: "btn btn-default" %>
+  <% end %>
 </div>
-</br>
 <hr>
+</br>
