@@ -49,4 +49,18 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:notice] = "请先进行登录!"
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @topic = Topic.find(params[:id])
+    @user = @topic.user
+    redirect_to(root_path) unless current_user?(@user)
+  end
 end

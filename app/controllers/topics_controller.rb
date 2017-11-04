@@ -1,8 +1,18 @@
 class TopicsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :index, :edit, :update]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
   before_action :find_topic, only: [:edit, :update, :destroy, :show]
   before_action :find_root_categories, only: [:new, :create, :edit, :update]
+  
+  def search
+    search = params[:search].present? ? params[:search] : nil
+    @topics = if search
+      Topic.where("title LIKE ?", "%#{search}%").order("created_at desc").page(params[:page])
+    else
+      Topic.all.order("created_at desc").page(params[:page])
+    end
+    render file: 'welcomes/index'
+  end 
 
   def index
     @topics = Topic.page(params[:page]).order("id desc")
@@ -54,7 +64,7 @@ class TopicsController < ApplicationController
       redirect_to :back
     end
   end
-
+  
   private
     def find_topic
       @topic = Topic.find(params[:id])
@@ -63,22 +73,8 @@ class TopicsController < ApplicationController
     def topic_params
       params.require(:topic).permit(:title, :content, :status, :category_id)
     end
-    
+
     def find_root_categories
       @root_categories = Category.roots
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:notice] = "请先进行登录!"
-        redirect_to login_url
-      end
-    end
-
-    def correct_user
-      @topic = Topic.find(params[:id])
-      @user = @topic.user
-      redirect_to(root_path) unless current_user?(@user)
-    end
+    end 
 end
