@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  before_action :find_topic, only: [:edit, :update, :destroy, :show]
+  before_action :find_topic, only: [:edit, :update, :destroy]
   before_action :find_root_categories, only: [:new, :create, :edit, :update]
   
   def search
@@ -15,9 +15,11 @@ class TopicsController < ApplicationController
   end 
  
   def show
+    @topic = Topic.includes([{ comments: :user }, :user]).find(params[:id])
     @categories = Category.grouped_data
     @comment = Comment.new
     @comments = @topic.comments.order("created_at desc")
+    @topic.increment!(:view_count)
   end
 
   def new

@@ -1,2 +1,16 @@
-<h2><%= @topic.title %></h2>
-<%= sanitize @topic.content %>
+<div>
+<h3><%= @topic.title %></h3>
+<div class="info">
+  <%= link_to "#{@topic.user.name}", user_path(@topic.user)%> 发表于<%= time_ago_in_words(@topic.created_at) %>前
+    <% unless @topic.comments_count == 0 %>
+      <span>
+        • 最后由
+        <%= link_to "#{@topic.comments.last.user.name}", user_path(@topic.comments.last.user) %>
+      <span><%= time_ago_in_words(@topic.comments.last.created_at) %>前回复</span>
+      </span>
+    <% end %>
+    <span>• <%= @topic.view_count %>次阅读</span>
+</div>
+</br>
+<span class="topic_content"><%= sanitize @topic.content %></span>
+</div>
